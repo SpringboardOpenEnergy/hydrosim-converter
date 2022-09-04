@@ -1,0 +1,6 @@
+rdflib==6.2.0
+matplotlib==3.5.3
+gravis==0.1.0
+networkx==2.6.3
+elementpath==2.2.2
+lxml==4.9.1

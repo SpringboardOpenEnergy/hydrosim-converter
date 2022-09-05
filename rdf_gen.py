@@ -11,7 +11,7 @@ def rdf_gen(G, all_nodes, all_edges, output_file):
     dbo = Namespace("http://dbpedia.org/ontology/")
     plant = dbo.PowerStation
     rsrv = dbo.Reservoir
-    wtr = dbo.WaterCourse
+    wtr = dbo.Waterway
 
     for node in all_nodes:
         n = URIRef("http://example.org/" + G.nodes[node]['node_name'])

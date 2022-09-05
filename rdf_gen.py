@@ -24,9 +24,9 @@ def rdf_gen(G, all_nodes, all_edges, output_file):
             g.add((n, RDF.type, wtr))
         g.add((n, FOAF.name, Literal(G.nodes[node]['node_name'])))
 
-    link_water_out = URIRef("http://example.org/WATER_OUT")
+    link_water_out = dbo.WaterOut# URIRef("http://example.org/WATER_OUT")
     g.add((link_water_out, FOAF.name, Literal("Water Out")))
-    link_floodrout_out = URIRef("http://example.org/FLOOD_ROUTE_OUT")
+    link_floodrout_out = dbo.FloodRouteOut # URIRef("http://example.org/FLOOD_ROUTE_OUT")
     g.add((link_floodrout_out, FOAF.name, Literal("Flood Route Out")))
     for edge in all_edges:
         if G.edges[edge[0], edge[1]]['link_type'] == "WaterOut":

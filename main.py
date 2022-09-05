@@ -5,7 +5,10 @@ from network_gen import generate_network, add_color
 from plotter_d3 import plot_graph
 from plotter_pydot import plot_graph as pyplot_graph
 from rdf_gen import rdf_gen
-import os
+import os, codecs
+
+
+
 def process_input(file, parser):
     parser.parse_xml(file)
     G, all_nodes, all_edges=generate_network(parser)
@@ -13,11 +16,10 @@ def process_input(file, parser):
     pyplot_graph(G, './pyplot_' + parser.parser_name() + '.png')
     fig=plot_graph(G)
     fname='./d3_' + parser.parser_name() + '.html'
-    try:
-        os.remove(fname)
-    except:
-        pass
-    fig.export_html(fname)
+    html=fig.to_html()
+    file = codecs.open(fname, "w", "utf-8")
+    file.write(str(html))
+    file.close()
     rdf_gen(G, all_nodes, all_edges, './rdf_' + parser.parser_name() + '.txt')
 
 if __name__ == '__main__':

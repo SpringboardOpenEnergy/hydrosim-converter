@@ -25,22 +25,27 @@ def add_color(G, nodes, edges):
 def generate_network(parser):
     G = nx.DiGraph()
     for n in parser.plants():
+        #n=n.encode("ISO-8859-1")
         G.add_node(n, type="PLANT")
         nx.set_node_attributes(G, {n:"PLANT"}, "node_type")
         nx.set_node_attributes(G, {n:n}, "node_name")
     for n in parser.rsrv():
+        #n=n.encode("ISO-8859-1")
         G.add_node(n, type="RSV")
         nx.set_node_attributes(G, {n:"RSV"}, "node_type")
         nx.set_node_attributes(G, {n:n}, "node_name")
     for n in parser.wtrw():
+        #n=n.encode("ISO-8859-1")
         G.add_node(n, type="WTR")
         nx.set_node_attributes(G, {n:"WTR"}, "node_type")
         nx.set_node_attributes(G, {n:n}, "node_name")
     for n in parser.wtr_out():
+        #n=(n[0].encode("ISO-8859-1"),n[1].encode("ISO-8859-1"))
         G.add_edge(n[0], n[1])
         attrs={(n[0], n[1]):{"link_type": "WaterOut"}}
         nx.set_edge_attributes(G, attrs)
     for n in parser.flood_route_out():
+        #n=(n[0].encode("ISO-8859-1"),n[1].encode("ISO-8859-1"))
         G.add_edge(n[0], n[1])
         attrs={(n[0], n[1]):{"link_type": "FloodroutOut" }}
         nx.set_edge_attributes(G, attrs)
